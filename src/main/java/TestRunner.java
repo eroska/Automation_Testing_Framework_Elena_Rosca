@@ -31,8 +31,4 @@ public class TestRunner {
         webDriverManagerObject.getDriverRun().close();
         webDriverManagerObject.getDriverRun().quit();
 
-
-    }
-
-
 }
