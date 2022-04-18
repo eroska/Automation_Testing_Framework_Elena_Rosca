@@ -1,6 +1,6 @@
 import managers.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import pageobjects.HomePage;
+import pageobjects.RegisterPage;
 
 public class TestRunner {
     public static void main(String[] args) throws InterruptedException {
@@ -8,27 +8,20 @@ public class TestRunner {
         WebDriverManager webDriverManagerObject = new WebDriverManager("Chrome");
         webDriverManagerObject.getDriverRun().get("https://demo.opencart.com/\n");
 
-        WebElement myAccountButton = webDriverManagerObject.getDriverRun().findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a"));
+        HomePage homePage = new HomePage(webDriverManagerObject.getDriverRun());
+        homePage.navigateToRegisterPage();
 
-        myAccountButton.click();
-        WebElement registrationButton = webDriverManagerObject.getDriverRun().findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/ul/li[1]/a"));
-        registrationButton.click();
-        WebElement firstNameInput = webDriverManagerObject.getDriverRun().findElement(By.xpath("//*[@id=\"input-firstname\"]"));
-        WebElement lastNameInput = webDriverManagerObject.getDriverRun().findElement(By.xpath("//*[@id=\"input-lastname\"]"));
-        WebElement emailAddressInput = webDriverManagerObject.getDriverRun().findElement(By.xpath("//*[@id=\"input-email\"]"));
-        WebElement telephoneInput = webDriverManagerObject.getDriverRun().findElement(By.xpath("//*[@id=\"input-telephone\"]"));
-        WebElement passwordInput = webDriverManagerObject.getDriverRun().findElement(By.xpath("//*[@id=\"input-password\"]"));
-        WebElement confirmPassworgInput = webDriverManagerObject.getDriverRun().findElement(By.xpath("//*[@id=\"input-confirm\"]"));
+        RegisterPage registerPage = new RegisterPage(webDriverManagerObject.getDriverRun());
+        registerPage.filliTheRegistrationPageForm("Margarita", "Popescu", "margpop@gmail.com", "0224565856", "4865555525", "4865555525");
 
-        firstNameInput.sendKeys("Helena");
-        lastNameInput.sendKeys("Rossa");
-        emailAddressInput.sendKeys("email@gma.com");
-        telephoneInput.sendKeys("068975159");
-        passwordInput.sendKeys("1365#4789");
-        confirmPassworgInput.sendKeys("1365#4789");
+
         Thread.sleep(3000);
 
         webDriverManagerObject.getDriverRun().close();
         webDriverManagerObject.getDriverRun().quit();
 
+
+    }
 }
+
+
