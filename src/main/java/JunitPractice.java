@@ -11,7 +11,7 @@ public class JunitPractice {
 
     @BeforeEach
     public void beforeTestProcedure() {
-        webDriverManagerObject.getDriverRun().get("https://demo.opencart.com/\n");
+        webDriverManagerObject.getDriverRun().get("https://demo-opencart.com/\n");
     }
 
     @AfterEach
@@ -35,7 +35,7 @@ public class JunitPractice {
         sleep(3000);
         boolean urlIsValide = webDriverManagerObject.getDriverRun().getCurrentUrl().contains("register");
         Assertions.assertTrue(urlIsValide, "Address URL is not valid");
-        
+
     }
 
     @Test
