@@ -20,20 +20,20 @@ public class GeneralStep {
     public void isAccessed(String addressUrl) {
 
         WebDriver driver = context.getWebDriverManager().getDriverRun();
+        driver.manage().window().maximize();
         driver.get(addressUrl);
         String url = driver.getCurrentUrl();
 
         Assert.assertEquals(addressUrl, url);
-
     }
 
-    @Then("^\"([^\"]*)\" is present within curent url$")
+    @Then("^\"([^\"]*)\" is present within current url$")
     public void isPresentWithinCurentUrl(String keyWord) {
 
         boolean urlIsValide = context.getWebDriverManager().getDriverRun().getCurrentUrl().contains(keyWord);
         Assertions.assertTrue(urlIsValide, "Address URL is not valid");
 
-        Hooks hooks= new Hooks(context);
+        Hooks hooks = new Hooks(context);
         hooks.tearDownAfterEachTest();
     }
 }
