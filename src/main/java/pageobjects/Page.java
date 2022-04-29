@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public abstract class Page {
-
+    WebDriver driver;
     public Page(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
