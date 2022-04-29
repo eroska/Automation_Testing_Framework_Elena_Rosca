@@ -2,12 +2,13 @@
 Feature: Register feature test suite
 
   Background:
-    Given "https://demo-opencart.com/" is accessed
+    Given "HomePage" is accessed
 
   Scenario: Register Page URL is accessible from Home Page
     When user clicks on my account button from navigation bar
     And Register button is clicked
-    Then "register" is present within current url
+
+    Then Correct "RegisterPage" endpoint is displayed
 
 
   Scenario: Open cart page is accessible
@@ -16,7 +17,7 @@ Feature: Register feature test suite
 
   @LectieAvansata
   Scenario Outline: error message is displayed when providing invalid data for registration form <affectedField>
-    Given "https://demo-opencart.com/" is accessed
+    Given "RegisterPage" is accessed
     And user clicks on register button from navigation bar
     When The register fields are populated with the following data:
       | firstName       | <first name>   |
