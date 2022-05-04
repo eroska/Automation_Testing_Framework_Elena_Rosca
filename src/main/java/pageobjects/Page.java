@@ -1,6 +1,7 @@
 package pageobjects;
 
 import managers.PropertiesManager;
+import managers.WebDriverWaiterManager;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,7 +34,10 @@ public abstract class Page {
     protected final String Base_URL = PropertiesManager.getBaseUrl();
 
     public void navigateToRegisterPage() {
+        WebDriverWaiterManager.waitElimentToBeVisible(myAcountButton, driver);
         myAcountButton.click();
+        WebDriverWaiterManager.waitElimentToBeVisible(registerButton, driver);
+        WebDriverWaiterManager.waitElementToBeClickable(registerButton, driver);
         registerButton.click();
     }
 
